@@ -1,0 +1,16 @@
+{
+  "name": "passport-github",
+  "version": "0.1.0",
+  "description": "GitHub authentication strategy for Passport.",
+  "author": "Jared Hanson <jaredhanson@gmail.com> (http://www.jaredhanson.net/)",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/jaredhanson/passport-github.git"
+  },
+  "main": "./lib/passport-github",
+  "dependencies": {
+    "passport-oauth": ">= 0.1.0"
+  },
+  "engines": { "node": ">= 0.4.0" },
+  "keywords": ["passport", "github", "auth", "authn", "authentication", "identity"]
+}
