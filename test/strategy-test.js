@@ -29,7 +29,7 @@ vows.describe('GitHubStrategy').addBatch({
       function() {});
       
       // mock
-      strategy._oauth2.getProtectedResource = function(url, accessToken, callback) {
+      strategy._oauth2.get = function(url, accessToken, callback) {
         var body = '{ "login": "octocat", "id": 1, "name": "monalisa octocat", "email": "octocat@github.com", "html_url": "https://github.com/octocat" }';
         
         callback(null, body, undefined);
@@ -59,8 +59,14 @@ vows.describe('GitHubStrategy').addBatch({
         assert.equal(profile.username, 'octocat');
         assert.equal(profile.displayName, 'monalisa octocat');
         assert.equal(profile.profileUrl, 'https://github.com/octocat');
-        assert.length(profile.emails, 1);
+        assert.lengthOf(profile.emails, 1);
         assert.equal(profile.emails[0].value, 'octocat@github.com');
+      },
+      'should set raw property' : function(err, profile) {
+        assert.isString(profile._raw);
+      },
+      'should set json property' : function(err, profile) {
+        assert.isObject(profile._json);
       },
     },
   },
@@ -74,7 +80,7 @@ vows.describe('GitHubStrategy').addBatch({
       function() {});
       
       // mock
-      strategy._oauth2.getProtectedResource = function(url, accessToken, callback) {
+      strategy._oauth2.get = function(url, accessToken, callback) {
         callback(new Error('something-went-wrong'));
       }
       

@@ -1,7 +1,7 @@
 # Passport-GitHub
 
 [Passport](https://github.com/jaredhanson/passport) strategy for authenticating
-with GitHub using the OAuth 2.0 API.
+with [GitHub](https://github.com/) using the OAuth 2.0 API.
 
 ## Installation
 
@@ -50,9 +50,16 @@ application:
         res.redirect('/');
       });
 
-#### Examples
+## Examples
 
 For a complete, working example, refer to the [login example](https://github.com/jaredhanson/passport-github/tree/master/examples/login).
+
+## Tests
+
+    $ npm install --dev
+    $ make test
+
+[![Build Status](https://secure.travis-ci.org/jaredhanson/passport-github.png)](http://travis-ci.org/jaredhanson/passport-github)
 
 ## Credits
 

@@ -2,15 +2,29 @@
   "name": "passport-github",
   "version": "0.1.0",
   "description": "GitHub authentication strategy for Passport.",
-  "author": "Jared Hanson <jaredhanson@gmail.com> (http://www.jaredhanson.net/)",
+  "author": { "name": "Jared Hanson", "email": "jaredhanson@gmail.com", "url": "http://www.jaredhanson.net/" },
   "repository": {
     "type": "git",
     "url": "http://github.com/jaredhanson/passport-github.git"
   },
+  "bugs": {
+    "url": "http://github.com/jaredhanson/passport-github/issues"
+  },
   "main": "./lib/passport-github",
   "dependencies": {
-    "passport-oauth": ">= 0.1.0"
+    "pkginfo": "0.2.x",
+    "passport-oauth": "0.1.x"
+  },
+  "devDependencies": {
+    "vows": "0.6.x"
+  },
+  "scripts": {
+    "test": "NODE_PATH=lib node_modules/.bin/vows test/*-test.js"
   },
   "engines": { "node": ">= 0.4.0" },
+  "licenses": [ {
+    "type": "MIT",
+    "url": "http://www.opensource.org/licenses/MIT" 
+  } ],
   "keywords": ["passport", "github", "auth", "authn", "authentication", "identity"]
 }
