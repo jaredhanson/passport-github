@@ -1,7 +1,13 @@
 # Passport-GitHub
 
-[Passport](https://github.com/jaredhanson/passport) strategy for authenticating
-with [GitHub](https://github.com/) using the OAuth 2.0 API.
+[Passport](http://passportjs.org/) strategy for authenticating with [GitHub](https://github.com/)
+using the OAuth 2.0 API.
+
+This module lets you authenticate using GitHub in your Node.js applications.
+By plugging into Passport, GitHub authentication can be easily and
+unobtrusively integrated into any application or framework that supports
+[Connect](http://www.senchalabs.org/connect/)-style middleware, including
+[Express](http://expressjs.com/).
 
 ## Installation
 
