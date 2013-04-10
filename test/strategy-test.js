@@ -30,9 +30,12 @@ vows.describe('GitHubStrategy').addBatch({
       
       // mock
       strategy._oauth2.get = function(url, accessToken, callback) {
-        var body = '{ "login": "octocat", "id": 1, "name": "monalisa octocat", "email": "octocat@github.com", "html_url": "https://github.com/octocat" }';
-        
-        callback(null, body, undefined);
+        if (url == 'https://api.github.com/user') {
+          var body = '{ "login": "octocat", "id": 1, "name": "monalisa octocat", "email": "octocat@github.com", "html_url": "https://github.com/octocat" }';
+          callback(null, body, undefined);
+        } else {
+          callback(new Error('Incorrect user profile URL'));
+        }
       }
       
       return strategy;
