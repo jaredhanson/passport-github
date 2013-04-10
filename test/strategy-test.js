@@ -74,6 +74,61 @@ vows.describe('GitHubStrategy').addBatch({
     },
   },
   
+  'strategy when loading user profile from custom URL': {
+    topic: function() {
+      var strategy = new GitHubStrategy({
+        clientID: 'ABC123',
+        clientSecret: 'secret',
+        userProfileURL: 'https://github.corpDomain/api/v3/user',
+      },
+      function() {});
+      
+      // mock
+      strategy._oauth2.get = function(url, accessToken, callback) {
+        if (url == 'https://github.corpDomain/api/v3/user') {
+          var body = '{ "login": "octocat", "id": 1, "name": "monalisa octocat", "email": "octocat@github.com", "html_url": "https://github.com/octocat" }';
+          callback(null, body, undefined);
+        } else {
+          callback(new Error('Incorrect user profile URL'));
+        }
+      }
+      
+      return strategy;
+    },
+    
+    'when told to load user profile': {
+      topic: function(strategy) {
+        var self = this;
+        function done(err, profile) {
+          self.callback(err, profile);
+        }
+        
+        process.nextTick(function () {
+          strategy.userProfile('access-token', done);
+        });
+      },
+      
+      'should not error' : function(err, req) {
+        assert.isNull(err);
+      },
+      'should load profile' : function(err, profile) {
+        assert.equal(profile.provider, 'github');
+        assert.equal(profile.id, '1');
+        assert.equal(profile.username, 'octocat');
+        assert.equal(profile.displayName, 'monalisa octocat');
+        assert.equal(profile.profileUrl, 'https://github.com/octocat');
+        assert.lengthOf(profile.emails, 1);
+        assert.equal(profile.emails[0].value, 'octocat@github.com');
+      },
+      'should set raw property' : function(err, profile) {
+        assert.isString(profile._raw);
+      },
+      'should set json property' : function(err, profile) {
+        assert.isObject(profile._json);
+      },
+    },
+  },
+  
   'strategy when loading user profile and encountering an error': {
     topic: function() {
       var strategy = new GitHubStrategy({
