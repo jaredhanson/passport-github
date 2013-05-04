@@ -18,6 +18,55 @@ vows.describe('GitHubStrategy').addBatch({
     'should be named github': function (strategy) {
       assert.equal(strategy.name, 'github');
     },
+    'should have default user agent': function (strategy) {
+      assert.equal(strategy._oauth2._customHeaders['User-Agent'], 'passport-github');
+    },
+  },
+  
+  'strategy with user agent option': {
+    topic: function() {
+      return new GitHubStrategy({
+        clientID: 'ABC123',
+        clientSecret: 'secret',
+        userAgent: 'example.com'
+      },
+      function() {});
+    },
+    
+    'should have correct user agent': function (strategy) {
+      assert.equal(strategy._oauth2._customHeaders['User-Agent'], 'example.com');
+    },
+  },
+  
+  'strategy with user agent option in custom headers': {
+    topic: function() {
+      return new GitHubStrategy({
+        clientID: 'ABC123',
+        clientSecret: 'secret',
+        customHeaders: { 'User-Agent': 'example2.com' }
+      },
+      function() {});
+    },
+    
+    'should have correct user agent': function (strategy) {
+      assert.equal(strategy._oauth2._customHeaders['User-Agent'], 'example2.com');
+    },
+  },
+  
+  'strategy with user agent option in custom headers and explicit option': {
+    topic: function() {
+      return new GitHubStrategy({
+        clientID: 'ABC123',
+        clientSecret: 'secret',
+        customHeaders: { 'User-Agent': 'example2.com' },
+        userAgent: 'example3.com'
+      },
+      function() {});
+    },
+    
+    'should prefer custom headers': function (strategy) {
+      assert.equal(strategy._oauth2._customHeaders['User-Agent'], 'example2.com');
+    },
   },
   
   'strategy when loading user profile': {
