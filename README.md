@@ -25,7 +25,8 @@ specifying a client ID, client secret, and callback URL.
     passport.use(new GitHubStrategy({
         clientID: GITHUB_CLIENT_ID,
         clientSecret: GITHUB_CLIENT_SECRET,
-        callbackURL: "http://127.0.0.1:3000/auth/github/callback"
+        callbackURL: "http://127.0.0.1:3000/auth/github/callback",
+        userAgent: "myapp.com"
       },
       function(accessToken, refreshToken, profile, done) {
         User.findOrCreate({ githubId: profile.id }, function (err, user) {
