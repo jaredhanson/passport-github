@@ -6,6 +6,7 @@ var GitHubStrategy = require('../lib/strategy');
 
 vows.describe('GitHubStrategy').addBatch({
   
+  // OK
   'strategy': {
     topic: function() {
       return new GitHubStrategy({
@@ -23,6 +24,7 @@ vows.describe('GitHubStrategy').addBatch({
     },
   },
   
+  // OK
   'strategy with user agent option': {
     topic: function() {
       return new GitHubStrategy({
@@ -38,6 +40,7 @@ vows.describe('GitHubStrategy').addBatch({
     },
   },
   
+  // OK
   'strategy with user agent option in custom headers': {
     topic: function() {
       return new GitHubStrategy({
@@ -53,6 +56,7 @@ vows.describe('GitHubStrategy').addBatch({
     },
   },
   
+  // OK
   'strategy with user agent option in custom headers and explicit option': {
     topic: function() {
       return new GitHubStrategy({
