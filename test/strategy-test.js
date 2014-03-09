@@ -1,7 +1,7 @@
 var vows = require('vows');
 var assert = require('assert');
 var util = require('util');
-var GitHubStrategy = require('passport-github/strategy');
+var GitHubStrategy = require('../lib/strategy');
 
 
 vows.describe('GitHubStrategy').addBatch({
