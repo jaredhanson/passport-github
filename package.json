@@ -33,7 +33,6 @@
     "passport-oauth2": "1.x.x"
   },
   "devDependencies": {
-    "vows": "~0.7.x",
     "mocha": "1.x.x",
     "chai": "1.x.x"
   },
@@ -41,6 +40,6 @@
     "node": ">= 0.4.0"
   },
   "scripts": {
-    "test": "NODE_PATH=lib node_modules/.bin/vows test/*-test.js"
+    "test": "node_modules/.bin/mocha --reporter spec --require test/bootstrap/node test/*.test.js"
   }
 }
