@@ -6,10 +6,12 @@ var github = require('passport-github');
 
 vows.describe('passport-github').addBatch({
   
+  /*
   'module': {
     'should report a version': function (x) {
       assert.isString(github.version);
     },
   },
+  */
   
 }).export(module);

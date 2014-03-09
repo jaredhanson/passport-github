@@ -1,11 +1,16 @@
 /* global describe, it, expect */
 
-var pkg = require('..');
+var strategy = require('..');
 
 describe('passport-github', function() {
+    
+  it('should export Strategy constructor directly from package', function() {
+    expect(strategy).to.be.a('function');
+    expect(strategy).to.equal(strategy.Strategy);
+  });
   
-  it('should export object', function() {
-    expect(pkg).to.be.an('object');
+  it('should export Strategy constructor', function() {
+    expect(strategy.Strategy).to.be.a('function');
   });
   
 });

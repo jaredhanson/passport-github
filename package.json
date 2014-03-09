@@ -30,11 +30,12 @@
   ],
   "main": "./lib/passport-github",
   "dependencies": {
-    "pkginfo": "0.2.x",
-    "passport-oauth": "~1.0.0"
+    "passport-oauth2": "1.x.x"
   },
   "devDependencies": {
-    "vows": "~0.7.x"
+    "vows": "~0.7.x",
+    "mocha": "1.x.x",
+    "chai": "1.x.x"
   },
   "engines": {
     "node": ">= 0.4.0"
