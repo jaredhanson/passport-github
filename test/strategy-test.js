@@ -73,6 +73,7 @@ vows.describe('GitHubStrategy').addBatch({
     },
   },
   
+  // OK
   'strategy when loading user profile': {
     topic: function() {
       var strategy = new GitHubStrategy({
@@ -127,6 +128,7 @@ vows.describe('GitHubStrategy').addBatch({
     },
   },
   
+  // OK
   'strategy when loading user profile from custom URL': {
     topic: function() {
       var strategy = new GitHubStrategy({
@@ -182,6 +184,7 @@ vows.describe('GitHubStrategy').addBatch({
     },
   },
   
+  // OK
   'strategy when loading user profile and encountering an error': {
     topic: function() {
       var strategy = new GitHubStrategy({
