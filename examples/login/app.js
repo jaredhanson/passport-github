@@ -1,11 +1,11 @@
 var express = require('express')
   , passport = require('passport')
   , util = require('util')
-  , GitHubStrategy = require('passport-github').Strategy;
+  , GitHubStrategy = require('passport-github').Strategy
+  , app = express();
 
-var GITHUB_CLIENT_ID = "--insert-github-client-id-here--"
+var GITHUB_CLIENT_ID     = "--insert-github-client-id-here--"
 var GITHUB_CLIENT_SECRET = "--insert-github-client-secret-here--";
-
 
 // Passport session setup.
 //   To support persistent login sessions, Passport needs to be able to
@@ -21,7 +21,6 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
-
 
 // Use the GitHubStrategy within Passport.
 //   Strategies in Passport require a `verify` function, which accept
@@ -45,19 +44,12 @@ passport.use(new GitHubStrategy({
   }
 ));
 
-
-
-
-var app = express.createServer();
-
 // configure Express
 app.configure(function() {
   app.set('views', __dirname + '/views');
   app.set('view engine', 'ejs');
   app.use(express.logger());
   app.use(express.cookieParser());
-  app.use(express.bodyParser());
-  app.use(express.methodOverride());
   app.use(express.session({ secret: 'keyboard cat' }));
   // Initialize Passport!  Also use passport.session() middleware, to support
   // persistent login sessions (recommended).
@@ -66,7 +58,6 @@ app.configure(function() {
   app.use(app.router);
   app.use(express.static(__dirname + '/public'));
 });
-
 
 app.get('/', function(req, res){
   res.render('index', { user: req.user });
@@ -108,7 +99,9 @@ app.get('/logout', function(req, res){
   res.redirect('/');
 });
 
-app.listen(3000);
+app.listen(3000, function(){
+    console.log('Passoport-github example started on port 3000, please go to http://127.0.0.1:3000/login to try it');
+});
 
 
 // Simple route middleware to ensure user is authenticated.
