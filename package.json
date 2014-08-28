@@ -1,6 +1,6 @@
 {
   "name": "passport-github",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "GitHub authentication strategy for Passport.",
   "keywords": [
     "passport",
@@ -37,7 +37,7 @@
     "chai": "1.x.x"
   },
   "engines": {
-    "node": ">= 0.4.0"
+    "node": ">= 0.8.0"
   },
   "scripts": {
     "test": "node_modules/.bin/mocha --reporter spec --require test/bootstrap/node test/*.test.js"
