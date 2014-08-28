@@ -14,10 +14,16 @@ describe('Strategy#userProfile', function() {
   
   // mock
   strategy._oauth2.get = function(url, accessToken, callback) {
-    if (url != 'https://api.github.com/user') { return callback(new Error('wrong url argument')); }
-    if (accessToken != 'token') { return callback(new Error('wrong token argument')); }
-    
-    var body = '{ "login": "octocat", "id": 1, "name": "monalisa octocat", "email": "octocat@github.com", "html_url": "https://github.com/octocat" }';
+      var testcases = {
+        'https://api.github.com/user': '{ "login": "octocat", "id": 1, "name": "monalisa octocat", "email": "octocat@github.com", "html_url": "https://github.com/octocat" }',
+		'https://api.github.com/user/emails': '[ { "email": "octocat@github.com", "verified": true, "primary": true } ]'
+      };
+
+      var body = testcases[url] || null;
+      if (!body)
+        return callback(new Error('wrong url argument'));
+
+      if (accessToken != 'token') { return callback(new Error('wrong token argument')); }
   
     callback(null, body, undefined);
   };

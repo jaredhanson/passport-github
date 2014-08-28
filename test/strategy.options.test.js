@@ -10,16 +10,23 @@ describe('Strategy#userProfile', function() {
     var strategy =  new GitHubStrategy({
         clientID: 'ABC123',
         clientSecret: 'secret',
-        userProfileURL: 'https://github.corpDomain/api/v3/user'
+        userProfileURL: 'https://github.corpDomain/api/v3/user',
+        userEmailURL: 'https://github.corpDomain/api/v3/emails'
       },
       function() {});
-  
+
     // mock
     strategy._oauth2.get = function(url, accessToken, callback) {
-      if (url != 'https://github.corpDomain/api/v3/user') { return callback(new Error('wrong url argument')); }
+      var testcases = {
+        'https://github.corpDomain/api/v3/user': '{ "login": "octocat", "id": 1, "name": "monalisa octocat", "email": "octocat@github.com", "html_url": "https://github.com/octocat" }',
+		'https://github.corpDomain/api/v3/emails': '[ { "email": "octocat@github.com", "verified": true, "primary": true } ]'
+      };
+
+      var body = testcases[url] || null;
+      if (!body)
+        return callback(new Error('wrong url argument'));
+
       if (accessToken != 'token') { return callback(new Error('wrong token argument')); }
-    
-      var body = '{ "login": "octocat", "id": 1, "name": "monalisa octocat", "email": "octocat@github.com", "html_url": "https://github.com/octocat" }';
   
       callback(null, body, undefined);
     };
