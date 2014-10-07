@@ -2,9 +2,12 @@
   "name": "passport-github-examples-login",
   "version": "0.0.0",
   "dependencies": {
-    "express": ">= 0.0.0",
-    "ejs": ">= 0.0.0",
-    "passport": ">= 0.0.0",
-    "passport-github": ">= 0.0.0"
+    "body-parser": "^1.9.0",
+    "cookie-parser": "^1.3.3",
+    "ejs": "^1.0.0",
+    "express": "^4.9.5",
+    "express-session": "^1.8.2",
+    "passport": "^0.2.1",
+    "passport-github": "^0.1.5"
   }
 }
