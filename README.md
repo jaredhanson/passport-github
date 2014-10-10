@@ -22,7 +22,7 @@ and OAuth 2.0 tokens.  The strategy requires a `verify` callback, which accepts
 these credentials and calls `done` providing a user, as well as `options`
 specifying a client ID, client secret, and callback URL.
     
-    passport = require('passport-github');
+    var passport = require('passport-github');
     
     passport.use(new GitHubStrategy({
         clientID: GITHUB_CLIENT_ID,
