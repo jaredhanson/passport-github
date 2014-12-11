@@ -1,7 +1,7 @@
 var express = require('express')
   , passport = require('passport')
   , util = require('util')
-  , GitHubStrategy = require('passport-github').Strategy;
+  , GitHubStrategy = require('passport-github2').Strategy;
 
 var GITHUB_CLIENT_ID = "--insert-github-client-id-here--"
 var GITHUB_CLIENT_SECRET = "--insert-github-client-secret-here--";
