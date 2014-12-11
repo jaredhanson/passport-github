@@ -1,4 +1,6 @@
-# Passport-GitHub
+# Passport-GitHub2
+
+Author of Passport-Github do not maintain module for a long time, and features in this module doesn't work since Github upgrades their API to version 3.0, so that we fork its project and re-publish it to NPM with a new name `passport-Github2`.
 
 [Passport](http://passportjs.org/) strategy for authenticating with [GitHub](https://github.com/)
 using the OAuth 2.0 API.
@@ -11,7 +13,7 @@ unobtrusively integrated into any application or framework that supports
 
 ## Install
 
-    $ npm install passport-github
+    $ npm install passport-github2
 
 ## Usage
 
@@ -54,18 +56,19 @@ application:
 
 ## Examples
 
-For a complete, working example, refer to the [login example](https://github.com/jaredhanson/passport-github/tree/master/examples/login).
+For a complete, working example, refer to the [login example](https://github.com/cfsghost/passport-github/tree/master/examples/login).
 
 ## Tests
 
     $ npm install --dev
     $ make test
 
-[![Build Status](https://secure.travis-ci.org/jaredhanson/passport-github.png)](http://travis-ci.org/jaredhanson/passport-github)
+[![Build Status](https://secure.travis-ci.org/cfsghost/passport-github.png)](http://travis-ci.org/cfsghost/passport-github)
 
 ## Credits
 
   - [Jared Hanson](http://github.com/jaredhanson)
+  - [Fred Chien](http://github.com/cfsghost)
 
 ## License
 
