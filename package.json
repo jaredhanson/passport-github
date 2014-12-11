@@ -1,6 +1,6 @@
 {
   "name": "passport-github2",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "GitHub authentication strategy for Passport.",
   "keywords": [
     "passport",
