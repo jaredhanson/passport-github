@@ -45,7 +45,7 @@ For example, as route middleware in an [Express](http://expressjs.com/)
 application:
 
     app.get('/auth/github',
-      passport.authenticate('github'));
+      passport.authenticate('github', { scope: [ 'user:email' ] }));
 
     app.get('/auth/github/callback', 
       passport.authenticate('github', { failureRedirect: '/login' }),
