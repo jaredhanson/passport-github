@@ -1,6 +1,6 @@
 # Passport-GitHub2
 
-Author of Passport-Github do not maintain module for a long time, and features in this module doesn't work since Github upgrades their API to version 3.0, so that we fork its project and re-publish it to NPM with a new name `passport-Github2`.
+The author of Passport-Github has not maintain module for a long time. Features in his module don't work since Github upgraded their API to version 3.0.  We forked it and re-publish it to NPM with a new name `passport-github2`.
 
 [Passport](http://passportjs.org/) strategy for authenticating with [GitHub](https://github.com/)
 using the OAuth 2.0 API.
