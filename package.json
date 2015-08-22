@@ -1,6 +1,6 @@
 {
-  "name": "passport-github",
-  "version": "0.1.7",
+  "name": "passport-github2",
+  "version": "0.1.9",
   "description": "GitHub authentication strategy for Passport.",
   "keywords": [
     "passport",
@@ -15,12 +15,18 @@
     "email": "jaredhanson@gmail.com",
     "url": "http://www.jaredhanson.net/"
   },
+  "contributors": [
+    {
+      "name": "Fred Chien",
+	  "email": "cfsghost@gmail.com"
+    }
+  ],
   "repository": {
     "type": "git",
-    "url": "http://github.com/jaredhanson/passport-github.git"
+    "url": "http://github.com/cfsghost/passport-github.git"
   },
   "bugs": {
-    "url": "http://github.com/jaredhanson/passport-github/issues"
+    "url": "http://github.com/cfsghost/passport-github/issues"
   },
   "licenses": [
     {
@@ -37,7 +43,7 @@
     "chai": "1.x.x"
   },
   "engines": {
-    "node": ">= 0.4.0"
+    "node": ">= 0.8.0"
   },
   "scripts": {
     "test": "node_modules/.bin/mocha --reporter spec --require test/bootstrap/node test/*.test.js"

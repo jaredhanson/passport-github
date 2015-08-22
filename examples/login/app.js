@@ -1,7 +1,7 @@
 var express = require('express')
   , passport = require('passport')
   , util = require('util')
-  , GitHubStrategy = require('passport-github').Strategy;
+  , GitHubStrategy = require('passport-github2').Strategy;
 
 var GITHUB_CLIENT_ID = "--insert-github-client-id-here--"
 var GITHUB_CLIENT_SECRET = "--insert-github-client-secret-here--";
@@ -83,10 +83,10 @@ app.get('/login', function(req, res){
 // GET /auth/github
 //   Use passport.authenticate() as route middleware to authenticate the
 //   request.  The first step in GitHub authentication will involve redirecting
-//   the user to github.com.  After authorization, GitHubwill redirect the user
+//   the user to github.com.  After authorization, GitHub will redirect the user
 //   back to this application at /auth/github/callback
 app.get('/auth/github',
-  passport.authenticate('github'),
+  passport.authenticate('github', { scope: [ 'user:email' ] }),
   function(req, res){
     // The request will be redirected to GitHub for authentication, so this
     // function will not be called.
