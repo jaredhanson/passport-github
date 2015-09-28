@@ -1,9 +1,14 @@
-var express = require('express')
-  , passport = require('passport')
-  , util = require('util')
-  , GitHubStrategy = require('passport-github2').Strategy;
+var express = require('express');
+var passport = require('passport');
+var util = require('util');
+var session = require('express-session');
+var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
+var GitHubStrategy = require('passport-github2').Strategy;
+var partials = require('express-partials');
 
-var GITHUB_CLIENT_ID = "--insert-github-client-id-here--"
+
+var GITHUB_CLIENT_ID = "--insert-github-client-id-here--";
 var GITHUB_CLIENT_SECRET = "--insert-github-client-secret-here--";
 
 
@@ -48,24 +53,20 @@ passport.use(new GitHubStrategy({
 
 
 
-var app = express.createServer();
+var app = express();
 
 // configure Express
-app.configure(function() {
-  app.set('views', __dirname + '/views');
-  app.set('view engine', 'ejs');
-  app.use(express.logger());
-  app.use(express.cookieParser());
-  app.use(express.bodyParser());
-  app.use(express.methodOverride());
-  app.use(express.session({ secret: 'keyboard cat' }));
-  // Initialize Passport!  Also use passport.session() middleware, to support
-  // persistent login sessions (recommended).
-  app.use(passport.initialize());
-  app.use(passport.session());
-  app.use(app.router);
-  app.use(express.static(__dirname + '/public'));
-});
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
+app.use(partials());
+app.use(bodyParser());
+app.use(methodOverride());
+app.use(session({ secret: 'keyboard cat' }));
+// Initialize Passport!  Also use passport.session() middleware, to support
+// persistent login sessions (recommended).
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(express.static(__dirname + '/public'));
 
 
 app.get('/', function(req, res){
