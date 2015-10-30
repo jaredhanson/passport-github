@@ -24,9 +24,9 @@ passport.deserializeUser(function(obj, done) {
 
 
 // Use the GitHubStrategy within Passport.
-//   Strategies in Passport require a `verify` function, which accept
+//   Strategies in Passport require a `verify` function which accepts
 //   credentials (in this case, an accessToken, refreshToken, and GitHub
-//   profile), and invoke a callback with a user object.
+//   profile) and invokes a callback with a user object.
 passport.use(new GitHubStrategy({
     clientID: GITHUB_CLIENT_ID,
     clientSecret: GITHUB_CLIENT_SECRET,
