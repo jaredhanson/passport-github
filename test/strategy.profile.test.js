@@ -74,5 +74,26 @@ describe('Strategy#userProfile', function() {
       expect(profile).to.be.undefined;
     });
   });
+
+  describe('no access token', function() {
+    var err, profile;
+
+    before(function(done) {
+      strategy.userProfile(undefined, function(e, p) {
+        err = e;
+        profile = p;
+        done();
+      });
+    });
+
+    it('should error', function() {
+      expect(err).to.be.an.instanceOf(Error);
+      expect(err.message).to.equal('No access token');
+    });
+
+    it('should not load profile', function() {
+      expect(profile).to.be.undefined;
+    });
+  });
   
 });
