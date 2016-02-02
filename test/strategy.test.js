@@ -4,7 +4,9 @@
 var $require = require('proxyquire')
   , chai = require('chai')
   , util = require('util')
+  , path =require('path')
   , fs = require('fs')
+  , existsSync = fs.existsSync || path.existsSync // node <=0.6
   , GitHubStrategy = require('../lib/strategy');
 
 
@@ -73,7 +75,7 @@ describe('Strategy', function() {
   describe('error caused by invalid code sent to token endpoint, with response erroneously indicating success', function() {
     var OAuth2Strategy = require('passport-oauth2').Strategy;
     var OAuth2;
-    if (fs.existsSync('node_modules/oauth')) { // npm 3.x
+    if (existsSync('node_modules/oauth')) { // npm 3.x
       OAuth2 = require('oauth').OAuth2;
     } else {
       OAuth2 = require('passport-oauth2/node_modules/oauth').OAuth2;
