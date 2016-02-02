@@ -3,6 +3,7 @@
 
 var $require = require('proxyquire')
   , chai = require('chai')
+  , util = require('util')
   , GitHubStrategy = require('../lib/strategy');
 
 
@@ -69,8 +70,12 @@ describe('Strategy', function() {
   });
   
   describe('error caused by invalid code sent to token endpoint, with response erroneously indicating success', function() {
-    var OAuth2 = require('passport-oauth2/node_modules/oauth').OAuth2
-    var OAuth2Strategy = function(options, verify) {
+    var OAuth2 = require('passport-oauth2/node_modules/oauth').OAuth2;
+    var OAuth2Strategy = require('passport-oauth2').Strategy;
+    
+    var MockOAuth2Strategy = function(options, verify) {
+      OAuth2Strategy.call(this, options, verify);
+      
       this._oauth2 = new OAuth2(options.clientID,  options.clientSecret,
         '', options.authorizationURL, options.tokenURL, options.customHeaders);
       this._oauth2.getOAuthAccessToken = function(code, options, callback) {
@@ -80,8 +85,10 @@ describe('Strategy', function() {
           error_uri: 'https://developer.github.com/v3/oauth/#bad-verification-code' });
       };
     }
+    util.inherits(MockOAuth2Strategy, OAuth2Strategy);
+    
     var GitHubStrategy = $require('../lib/strategy', {
-      'passport-oauth2': OAuth2Strategy
+      'passport-oauth2': MockOAuth2Strategy
     })
     
     var strategy = new GitHubStrategy({
