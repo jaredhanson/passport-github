@@ -1,5 +1,11 @@
 # Passport-GitHub
 
+[![Build](https://img.shields.io/travis/jaredhanson/passport-github.svg)](https://travis-ci.org/jaredhanson/passport-github)
+[![Coverage](https://img.shields.io/coveralls/jaredhanson/passport-github.svg)](https://coveralls.io/r/jaredhanson/passport-github)
+[![Quality](https://img.shields.io/codeclimate/github/jaredhanson/passport-github.svg?label=quality)](https://codeclimate.com/github/jaredhanson/passport-github)
+[![Dependencies](https://img.shields.io/david/jaredhanson/passport-github.svg)](https://david-dm.org/jaredhanson/passport-github)
+
+
 [Passport](http://passportjs.org/) strategy for authenticating with [GitHub](https://github.com/)
 using the OAuth 2.0 API.
 
