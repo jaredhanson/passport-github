@@ -51,6 +51,33 @@ describe('Strategy#userProfile', function() {
     });
   }); // fetched from default endpoint
   
+  describe('error caused by invalid token', function() {
+    var strategy =  new GitHubStrategy({
+        clientID: 'ABC123',
+        clientSecret: 'secret'
+      }, function() {});
+  
+    strategy._oauth2.get = function(url, accessToken, callback) {
+      var body = '{"message":"Bad credentials","documentation_url":"https://developer.github.com/v3"}';
+      callback({ statusCode: 400, data: body });
+    };
+      
+    var err, profile;
+    before(function(done) {
+      strategy.userProfile('token', function(e, p) {
+        err = e;
+        profile = p;
+        done();
+      });
+    });
+  
+    it('should error', function() {
+      expect(err).to.be.an.instanceOf(Error);
+      expect(err.constructor.name).to.equal('APIError');
+      expect(err.message).to.equal('Bad credentials');
+    });
+  }); // error caused by invalid token
+  
   describe('internal error', function() {
     var strategy =  new GitHubStrategy({
       clientID: 'ABC123',
