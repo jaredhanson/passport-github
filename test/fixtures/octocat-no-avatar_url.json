@@ -1,8 +1,7 @@
 {
   "login": "octocat",
   "id": 1,
-  "avatar_url": "https://github.com/images/error/octocat_happy.gif",
-  "gravatar_id": "somehexcode",
+  "gravatar_id": "",
   "url": "https://api.github.com/users/octocat",
   "html_url": "https://github.com/octocat",
   "followers_url": "https://api.github.com/users/octocat/followers",

@@ -1,19 +1,19 @@
 /* global describe, it, expect, before */
 /* jshint expr: true */
 
-var fs = require('fs')
-  , parse = require('../lib/profile').parse;
+var Profile = require('../lib/profile')
+  , fs = require('fs');
 
 
 describe('profile.parse', function() {
 
-  describe('example profile', function() {
+  describe('profile obtained from Users documentation on 2016/02/02', function() {
     var profile;
 
     before(function(done) {
-      fs.readFile('test/data/example.json', 'utf8', function(err, data) {
+      fs.readFile('test/fixtures/octocat.json', 'utf8', function(err, data) {
         if (err) { return done(err); }
-        profile = parse(data);
+        profile = Profile.parse(data);
         done();
       });
     });
@@ -30,13 +30,13 @@ describe('profile.parse', function() {
     });
   });
 
-  describe('example profile with null email', function() {
+  describe('profile obtained from Users documentation on 2016/02/02, with email attribute removed', function() {
     var profile;
 
     before(function(done) {
-      fs.readFile('test/data/example-null-email.json', 'utf8', function(err, data) {
+      fs.readFile('test/fixtures/octocat-no-email.json', 'utf8', function(err, data) {
         if (err) { return done(err); }
-        profile = parse(data);
+        profile = Profile.parse(data);
         done();
       });
     });
@@ -50,13 +50,13 @@ describe('profile.parse', function() {
     });
   });
 
-  describe('example profile with null avatar', function() {
+  describe('profile obtained from Users documentation on 2016/02/02, with avatar_url attribute removed', function() {
     var profile;
 
     before(function(done) {
-      fs.readFile('test/data/example-null-avatar.json', 'utf8', function(err, data) {
+      fs.readFile('test/fixtures/octocat-no-avatar_url.json', 'utf8', function(err, data) {
         if (err) { return done(err); }
-        profile = parse(data);
+        profile = Profile.parse(data);
         done();
       });
     });
