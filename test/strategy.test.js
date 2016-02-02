@@ -68,7 +68,7 @@ describe('Strategy', function() {
     });
   });
   
-  describe('error caused by invalid code sent to token endpoint, with response indicating success', function() {
+  describe('error caused by invalid code sent to token endpoint, with response erroneously indicating success', function() {
     var OAuth2 = require('passport-oauth2/node_modules/oauth').OAuth2
     var OAuth2Strategy = function(options, verify) {
       this._oauth2 = new OAuth2(options.clientID,  options.clientSecret,
