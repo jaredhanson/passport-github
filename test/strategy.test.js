@@ -5,61 +5,63 @@ var GitHubStrategy = require('../lib/strategy');
 
 
 describe('Strategy', function() {
-    
-  var strategy = new GitHubStrategy({
+  
+  describe('constructed', function() {
+    var strategy = new GitHubStrategy({
       clientID: 'ABC123',
       clientSecret: 'secret'
-    },
-    function() {});
+    }, function() {});
     
-  it('should be named github', function() {
-    expect(strategy.name).to.equal('github');
-  });
-  
-  it('should have default user agent', function() {
-    expect(strategy._oauth2._customHeaders['User-Agent']).to.equal('passport-github');
-  });
-  
-  
-  describe('constructed with user agent option', function() {
-    
-    var strategy = new GitHubStrategy({
-        clientID: 'ABC123',
-        clientSecret: 'secret',
-        userAgent: 'example.com'
-      },
-      function() {});
-  
+    it('should be named github', function() {
+      expect(strategy.name).to.equal('github');
+    });
+
     it('should have default user agent', function() {
-      expect(strategy._oauth2._customHeaders['User-Agent']).to.equal('example.com');
+      expect(strategy._oauth2._customHeaders['User-Agent']).to.equal('passport-github');
+    });
+  })
+  
+  describe('constructed with undefined options', function() {
+    it('should throw', function() {
+      expect(function() {
+        var strategy = new GitHubStrategy(undefined, function(){});
+      }).to.throw(Error);
+    });
+  })
+  
+  describe('constructed with customHeaders option, including User-Agent field', function() {
+    var strategy = new GitHubStrategy({
+      clientID: 'ABC123',
+      clientSecret: 'secret',
+      customHeaders: { 'User-Agent': 'example.test' }
+    }, function() {});
+  
+    it('should set user agent as custom header in underlying OAuth 2.0 implementation', function() {
+      expect(strategy._oauth2._customHeaders['User-Agent']).to.equal('example.test');
     });
   });
   
-  describe('constructed with custom headers including user agent', function() {
-    
+  describe('constructed with userAgent option', function() {
     var strategy = new GitHubStrategy({
-        clientID: 'ABC123',
-        clientSecret: 'secret',
-        customHeaders: { 'User-Agent': 'example.net' }
-      },
-      function() {});
+      clientID: 'ABC123',
+      clientSecret: 'secret',
+      userAgent: 'example.test'
+    }, function() {});
   
-    it('should have default user agent', function() {
-      expect(strategy._oauth2._customHeaders['User-Agent']).to.equal('example.net');
+    it('should set user agent as custom header in underlying OAuth 2.0 implementation', function() {
+      expect(strategy._oauth2._customHeaders['User-Agent']).to.equal('example.test');
     });
   });
   
-  describe('constructed with both custom headers including user agent and user agent option', function() {
-    
+  describe('constructed with both customHeaders option, including User-Agent field, and userAgent option', function() {
     var strategy = new GitHubStrategy({
-        clientID: 'ABC123',
-        clientSecret: 'secret',
-        customHeaders: { 'User-Agent': 'example.org' },
-        userAgent: 'example.net'
-      },
-      function() {});
+      clientID: 'ABC123',
+      clientSecret: 'secret',
+      customHeaders: { 'User-Agent': 'example.org' },
+      userAgent: 'example.net'
+    }, function() {});
   
-    it('should have default user agent', function() {
+    it('should set user agent as custom header in underlying OAuth 2.0 implementation', function() {
       expect(strategy._oauth2._customHeaders['User-Agent']).to.equal('example.org');
     });
   });
