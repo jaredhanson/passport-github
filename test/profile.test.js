@@ -1,11 +1,11 @@
-/* global describe, it, expect, before */
+/* global describe, it, before, expect */
 /* jshint expr: true */
 
 var Profile = require('../lib/profile')
   , fs = require('fs');
 
 
-describe('profile.parse', function() {
+describe('Profile.parse', function() {
 
   describe('profile obtained from Users documentation on 2016/02/02', function() {
     var profile;
