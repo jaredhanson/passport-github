@@ -23,22 +23,36 @@ $ npm install passport-github
 
 ## Usage
 
+#### Create an Application
+
+Before using `passport-facebook`, you must register an application with
+GitHub.  If you have not already done so, a new application can be created at
+[developer applications](https://github.com/settings/applications/new) within
+GitHub's settings panel.  Your application will be issued a client ID and client
+secret, which need to be provided to the strategy.  You will also need to
+configure a callback URL which matches the route in your application.
+
 #### Configure Strategy
 
 The GitHub authentication strategy authenticates users using a GitHub account
-and OAuth 2.0 tokens.  The strategy requires a `verify` callback, which accepts
-these credentials and calls `done` providing a user, as well as `options`
-specifying a client ID, client secret, and callback URL.
+and OAuth 2.0 tokens.  The client ID and secret obtained when creating an
+application are supplied as options when creating the strategy.  The strategy
+also requires a `verify` callback, which receives the access token and optional
+refresh token, as well as `profile` which contains the authenticated user's
+GitHub profile.  The `verify` callback must call `cb` providing a user to
+complete authentication.
 
 ```js
+var GitHubStrategy = require('passport-github').Strategy;
+
 passport.use(new GitHubStrategy({
     clientID: GITHUB_CLIENT_ID,
     clientSecret: GITHUB_CLIENT_SECRET,
     callbackURL: "http://127.0.0.1:3000/auth/github/callback"
   },
-  function(accessToken, refreshToken, profile, done) {
+  function(accessToken, refreshToken, profile, cb) {
     User.findOrCreate({ githubId: profile.id }, function (err, user) {
-      return done(err, user);
+      return cb(err, user);
     });
   }
 ));
@@ -66,20 +80,47 @@ app.get('/auth/github/callback',
 
 ## Examples
 
-For a complete, working example, refer to the [login example](https://github.com/jaredhanson/passport-github/tree/master/examples/login).
+Developers using the popular [Express](http://expressjs.com/) web framework can
+refer to an [example](https://github.com/passport/express-4.x-facebook-example)
+as a starting point for their own web applications.  The example shows how to
+authenticate users using Facebook.  However, because both Facebook and GitHub
+use OAuth 2.0, the code is similar.  Simply replace references to Facebook with
+corresponding references to GitHub.
 
-## Tests
+## Contributing
+
+#### Tests
+
+The test suite is located in the `test/` directory.  All new features are
+expected to have corresponding test cases.  Ensure that the complete test suite
+passes by executing:
 
 ```bash
-$ npm install --dev
 $ make test
 ```
 
-[![Build Status](https://secure.travis-ci.org/jaredhanson/passport-github.png)](http://travis-ci.org/jaredhanson/passport-github)
+#### Coverage
 
-## Credits
+The test suite covers 100% of the code base.  All new feature development is
+expected to maintain that level.  Coverage reports can be viewed by executing:
 
-  - [Jared Hanson](http://github.com/jaredhanson)
+```bash
+$ make test-cov
+$ make view-cov
+```
+
+## Support
+
+#### Funding
+
+This software is provided to you as open source, free of charge.  The time and
+effort to develop and maintain this project is dedicated by [@jaredhanson](https://github.com/jaredhanson).
+If you (or your employer) benefit from this project, please consider a financial
+contribution.  Your contribution helps continue the efforts that produce this
+and other open source software.
+
+Funds are accepted via [PayPal](https://paypal.me/jaredhanson), [Venmo](https://venmo.com/jaredhanson),
+and [other](http://jaredhanson.net/pay) methods.  Any amount is appreciated.
 
 ## License
 
