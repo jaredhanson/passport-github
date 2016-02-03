@@ -1,4 +1,4 @@
-# Passport-GitHub
+# passport-github
 
 [![Build](https://img.shields.io/travis/jaredhanson/passport-github.svg)](https://travis-ci.org/jaredhanson/passport-github)
 [![Coverage](https://img.shields.io/coveralls/jaredhanson/passport-github.svg)](https://coveralls.io/r/jaredhanson/passport-github)
@@ -25,8 +25,8 @@ $ npm install passport-github
 
 #### Create an Application
 
-Before using `passport-facebook`, you must register an application with
-GitHub.  If you have not already done so, a new application can be created at
+Before using `passport-github`, you must register an application with GitHub.
+If you have not already done so, a new application can be created at
 [developer applications](https://github.com/settings/applications/new) within
 GitHub's settings panel.  Your application will be issued a client ID and client
 secret, which need to be provided to the strategy.  You will also need to
