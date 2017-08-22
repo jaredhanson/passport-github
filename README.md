@@ -11,9 +11,11 @@ unobtrusively integrated into any application or framework that supports
 [Connect](http://www.senchalabs.org/connect/)-style middleware, including
 [Express](http://expressjs.com/).
 
-## Install
+## Installation
 
-    $ npm install passport-github2
+```shell
+$ npm install passport-github2
+```
 
 ## Usage
 
@@ -24,17 +26,19 @@ and OAuth 2.0 tokens.  The strategy requires a `verify` callback, which accepts
 these credentials and calls `done` providing a user, as well as `options`
 specifying a client ID, client secret, and callback URL.
 
-    passport.use(new GitHubStrategy({
-        clientID: GITHUB_CLIENT_ID,
-        clientSecret: GITHUB_CLIENT_SECRET,
-        callbackURL: "http://127.0.0.1:3000/auth/github/callback"
-      },
-      function(accessToken, refreshToken, profile, done) {
-        User.findOrCreate({ githubId: profile.id }, function (err, user) {
-          return done(err, user);
-        });
-      }
-    ));
+```javascript
+passport.use(new GitHubStrategy({
+    clientID: GITHUB_CLIENT_ID,
+    clientSecret: GITHUB_CLIENT_SECRET,
+    callbackURL: "http://127.0.0.1:3000/auth/github/callback"
+  },
+  function(accessToken, refreshToken, profile, done) {
+    User.findOrCreate({ githubId: profile.id }, function (err, user) {
+      return done(err, user);
+    });
+  }
+));
+```
 
 #### Authenticate Requests
 
@@ -44,15 +48,17 @@ authenticate requests.
 For example, as route middleware in an [Express](http://expressjs.com/)
 application:
 
-    app.get('/auth/github',
-      passport.authenticate('github', { scope: [ 'user:email' ] }));
+```javascript
+app.get('/auth/github',
+  passport.authenticate('github', { scope: [ 'user:email' ] }));
 
-    app.get('/auth/github/callback', 
-      passport.authenticate('github', { failureRedirect: '/login' }),
-      function(req, res) {
-        // Successful authentication, redirect home.
-        res.redirect('/');
-      });
+app.get('/auth/github/callback', 
+  passport.authenticate('github', { failureRedirect: '/login' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/');
+  });
+```
 
 ## Examples
 
@@ -60,8 +66,10 @@ For a complete, working example, refer to the [login example](https://github.com
 
 ## Tests
 
-    $ npm install --dev
-    $ make test
+```shell
+$ npm install --dev
+$ make test
+```
 
 [![Build Status](https://secure.travis-ci.org/cfsghost/passport-github.png)](http://travis-ci.org/cfsghost/passport-github)
 
