@@ -1,6 +1,6 @@
 {
   "name": "passport-github2",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "GitHub authentication strategy for Passport.",
   "keywords": [
     "passport",
@@ -18,7 +18,7 @@
   "contributors": [
     {
       "name": "Fred Chien",
-	  "email": "cfsghost@gmail.com"
+      "email": "cfsghost@gmail.com"
     }
   ],
   "repository": {
