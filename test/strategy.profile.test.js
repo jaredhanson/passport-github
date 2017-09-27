@@ -15,8 +15,8 @@ describe('Strategy#userProfile', function() {
   // mock
   strategy._oauth2.get = function(url, accessToken, callback) {
       var testcases = {
-        'https://api.github.com/user': '{ "login": "octocat", "id": 1, "name": "monalisa octocat", "email": "octocat@github.com", "html_url": "https://github.com/octocat" }',
-		'https://api.github.com/user/emails': '[ { "email": "octocat@github.com", "verified": true, "primary": true } ]'
+        'https://api.github.com/user': '{ "login": "octocat", "id": 1, "name": "monalisa octocat", "email": "octocat@github.com", "avatar_url": "https://avatars1.githubusercontent.com/u/583231?v=3&s=460", "html_url": "https://github.com/octocat" }',
+        'https://api.github.com/user/emails': '[ { "email": "octocat@github.com", "verified": true, "primary": true } ]'
       };
 
       var body = testcases[url] || null;
@@ -48,6 +48,8 @@ describe('Strategy#userProfile', function() {
       expect(profile.profileUrl).to.equal('https://github.com/octocat');
       expect(profile.emails).to.have.length(1);
       expect(profile.emails[0].value).to.equal('octocat@github.com');
+      expect(profile.photos).to.have.length(1);
+      expect(profile.photos[0].value).to.equal('https://avatars1.githubusercontent.com/u/583231?v=3&s=460');
     });
     
     it('should set raw property', function() {
