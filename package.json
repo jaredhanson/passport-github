@@ -1,6 +1,6 @@
 {
   "name": "passport-github",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "GitHub authentication strategy for Passport.",
   "keywords": [
     "passport",
@@ -15,6 +15,16 @@
     "email": "jaredhanson@gmail.com",
     "url": "http://www.jaredhanson.net/"
   },
+  "contributors": [
+    {
+      "name": "Fred Chien",
+      "email": "cfsghost@gmail.com"
+    },
+    {
+      "name": "Benajmin Spriggs",
+      "email": "ben@sprico.com"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "http://github.com/jaredhanson/passport-github.git"
@@ -35,13 +45,13 @@
   },
   "devDependencies": {
     "make-node": "0.3.x",
-    "mocha": "1.x.x",
-    "chai": "2.x.x",
+    "mocha": "5.x.x",
+    "chai": "4.x.x",
     "chai-passport-strategy": "1.x.x",
-    "proxyquire": "1.4.x"
+    "proxyquire": "1.8.x"
   },
   "engines": {
-    "node": ">= 0.4.0"
+    "node": ">= 0.8.0"
   },
   "scripts": {
     "test": "node_modules/.bin/mocha --require test/bootstrap/node test/*.test.js"

@@ -5,9 +5,8 @@
 [![Quality](https://img.shields.io/codeclimate/github/jaredhanson/passport-github.svg?label=quality)](https://codeclimate.com/github/jaredhanson/passport-github)
 [![Dependencies](https://img.shields.io/david/jaredhanson/passport-github.svg)](https://david-dm.org/jaredhanson/passport-github)
 
-
 [Passport](http://passportjs.org/) strategy for authenticating with [GitHub](https://github.com/)
-using the OAuth 2.0 API.
+using the OAuth 3.0 API.
 
 This module lets you authenticate using GitHub in your Node.js applications.
 By plugging into Passport, GitHub authentication can be easily and
@@ -15,7 +14,7 @@ unobtrusively integrated into any application or framework that supports
 [Connect](http://www.senchalabs.org/connect/)-style middleware, including
 [Express](http://expressjs.com/).
 
-## Install
+## Installation
 
 ```bash
 $ npm install passport-github
@@ -35,14 +34,11 @@ configure a callback URL which matches the route in your application.
 #### Configure Strategy
 
 The GitHub authentication strategy authenticates users using a GitHub account
-and OAuth 2.0 tokens.  The client ID and secret obtained when creating an
-application are supplied as options when creating the strategy.  The strategy
-also requires a `verify` callback, which receives the access token and optional
-refresh token, as well as `profile` which contains the authenticated user's
-GitHub profile.  The `verify` callback must call `cb` providing a user to
-complete authentication.
+and OAuth 3.0 tokens.  The strategy requires a `verify` callback, which accepts
+these credentials and calls `done` providing a user, as well as `options`
+specifying a client ID, client secret, and callback URL.
 
-```js
+```javascript
 var GitHubStrategy = require('passport-github').Strategy;
 
 passport.use(new GitHubStrategy({
@@ -50,9 +46,9 @@ passport.use(new GitHubStrategy({
     clientSecret: GITHUB_CLIENT_SECRET,
     callbackURL: "http://127.0.0.1:3000/auth/github/callback"
   },
-  function(accessToken, refreshToken, profile, cb) {
+  function(accessToken, refreshToken, profile, done) {
     User.findOrCreate({ githubId: profile.id }, function (err, user) {
-      return cb(err, user);
+      return done(err, user);
     });
   }
 ));
@@ -96,6 +92,7 @@ expected to have corresponding test cases.  Ensure that the complete test suite
 passes by executing:
 
 ```bash
+$ npm install --only=dev
 $ make test
 ```
 
@@ -109,18 +106,13 @@ $ make test-cov
 $ make view-cov
 ```
 
+[![Build Status](https://secure.travis-ci.org/cfsghost/passport-github.png)](http://travis-ci.org/cfsghost/passport-github)
+
 ## Support
 
-#### Funding
-
-This software is provided to you as open source, free of charge.  The time and
-effort to develop and maintain this project is dedicated by [@jaredhanson](https://github.com/jaredhanson).
-If you (or your employer) benefit from this project, please consider a financial
-contribution.  Your contribution helps continue the efforts that produce this
-and other open source software.
-
-Funds are accepted via [PayPal](https://paypal.me/jaredhanson), [Venmo](https://venmo.com/jaredhanson),
-and [other](http://jaredhanson.net/pay) methods.  Any amount is appreciated.
+  - [Jared Hanson](http://github.com/jaredhanson)
+  - [Fred Chien](http://github.com/cfsghost)
+  - [Benjamin Spriggs](https://github.com/benjspriggs)
 
 ## License
 
