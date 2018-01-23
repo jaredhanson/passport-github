@@ -41,7 +41,6 @@
   ],
   "main": "./lib",
   "dependencies": {
-    "istanbul": "^0.4.5",
     "passport-oauth2": "1.x.x"
   },
   "devDependencies": {
