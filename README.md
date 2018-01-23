@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-# Passport-GitHub2
-
-The author of Passport-Github has not maintained the original module for a long time. Features in his module don't work since Github upgraded their API to version 3.0.  We forked it and re-published it to NPM with a new name `passport-github2`.
-=======
 # passport-github
 
 [![Build](https://img.shields.io/travis/jaredhanson/passport-github.svg)](https://travis-ci.org/jaredhanson/passport-github)
@@ -10,10 +5,8 @@ The author of Passport-Github has not maintained the original module for a long 
 [![Quality](https://img.shields.io/codeclimate/github/jaredhanson/passport-github.svg?label=quality)](https://codeclimate.com/github/jaredhanson/passport-github)
 [![Dependencies](https://img.shields.io/david/jaredhanson/passport-github.svg)](https://david-dm.org/jaredhanson/passport-github)
 
->>>>>>> 4db6a1b1a1c8e416b830afb1a0b852020d234a90
-
 [Passport](http://passportjs.org/) strategy for authenticating with [GitHub](https://github.com/)
-using the OAuth 2.0 API.
+using the OAuth 3.0 API.
 
 This module lets you authenticate using GitHub in your Node.js applications.
 By plugging into Passport, GitHub authentication can be easily and
@@ -23,13 +16,8 @@ unobtrusively integrated into any application or framework that supports
 
 ## Installation
 
-<<<<<<< HEAD
-```shell
-$ npm install passport-github2
-=======
 ```bash
 $ npm install passport-github
->>>>>>> 4db6a1b1a1c8e416b830afb1a0b852020d234a90
 ```
 
 ## Usage
@@ -63,21 +51,14 @@ complete authentication.
 ```js
 var GitHubStrategy = require('passport-github').Strategy;
 
->>>>>>> 4db6a1b1a1c8e416b830afb1a0b852020d234a90
 passport.use(new GitHubStrategy({
     clientID: GITHUB_CLIENT_ID,
     clientSecret: GITHUB_CLIENT_SECRET,
     callbackURL: "http://127.0.0.1:3000/auth/github/callback"
   },
-<<<<<<< HEAD
   function(accessToken, refreshToken, profile, done) {
     User.findOrCreate({ githubId: profile.id }, function (err, user) {
       return done(err, user);
-=======
-  function(accessToken, refreshToken, profile, cb) {
-    User.findOrCreate({ githubId: profile.id }, function (err, user) {
-      return cb(err, user);
->>>>>>> 4db6a1b1a1c8e416b830afb1a0b852020d234a90
     });
   }
 ));
@@ -91,15 +72,9 @@ authenticate requests.
 For example, as route middleware in an [Express](http://expressjs.com/)
 application:
 
-<<<<<<< HEAD
-```javascript
-app.get('/auth/github',
-  passport.authenticate('github', { scope: [ 'user:email' ] }));
-=======
 ```js
 app.get('/auth/github',
   passport.authenticate('github'));
->>>>>>> 4db6a1b1a1c8e416b830afb1a0b852020d234a90
 
 app.get('/auth/github/callback', 
   passport.authenticate('github', { failureRedirect: '/login' }),
@@ -130,6 +105,7 @@ expected to have corresponding test cases.  Ensure that the complete test suite
 passes by executing:
 
 ```bash
+$ npm install --only=dev
 $ make test
 ```
 
@@ -137,39 +113,19 @@ $ make test
 
 The test suite covers 100% of the code base.  All new feature development is
 expected to maintain that level.  Coverage reports can be viewed by executing:
->>>>>>> 4db6a1b1a1c8e416b830afb1a0b852020d234a90
 
 ```bash
 $ make test-cov
 $ make view-cov
 ```
 
-<<<<<<< HEAD
-```shell
-$ npm install --dev
-$ make test
-```
-
 [![Build Status](https://secure.travis-ci.org/cfsghost/passport-github.png)](http://travis-ci.org/cfsghost/passport-github)
-=======
+
 ## Support
 
-#### Funding
->>>>>>> 4db6a1b1a1c8e416b830afb1a0b852020d234a90
-
-This software is provided to you as open source, free of charge.  The time and
-effort to develop and maintain this project is dedicated by [@jaredhanson](https://github.com/jaredhanson).
-If you (or your employer) benefit from this project, please consider a financial
-contribution.  Your contribution helps continue the efforts that produce this
-and other open source software.
-
-<<<<<<< HEAD
   - [Jared Hanson](http://github.com/jaredhanson)
   - [Fred Chien](http://github.com/cfsghost)
-=======
-Funds are accepted via [PayPal](https://paypal.me/jaredhanson), [Venmo](https://venmo.com/jaredhanson),
-and [other](http://jaredhanson.net/pay) methods.  Any amount is appreciated.
->>>>>>> 4db6a1b1a1c8e416b830afb1a0b852020d234a90
+  - [Benjamin Spriggs](https://github.com/benjspriggs)
 
 ## License
 
