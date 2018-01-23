@@ -1,6 +1,6 @@
 {
   "name": "passport-github",
-  "version": "1.1.0",
+  "version": "https://github.com/benjspriggs/passport-github/tarball/master",
   "description": "GitHub authentication strategy for Passport.",
   "keywords": [
     "passport",
@@ -19,14 +19,18 @@
     {
       "name": "Fred Chien",
       "email": "cfsghost@gmail.com"
+    },
+    {
+      "name": "Benajmin Spriggs",
+      "email": "ben@sprico.com"
     }
   ],
   "repository": {
     "type": "git",
-    "url": "http://github.com/cfsghost/passport-github.git"
+    "url": "http://github.com/jaredhanson/passport-github"
   },
   "bugs": {
-    "url": "http://github.com/cfsghost/passport-github/issues"
+    "url": "http://github.com/jaredhanson/passport-github/issue"
   },
   "license": "MIT",
   "licenses": [
@@ -52,4 +56,4 @@
   "scripts": {
     "test": "node_modules/.bin/mocha --require test/bootstrap/node test/*.test.js"
   }
-}
+    }
