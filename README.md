@@ -34,21 +34,11 @@ configure a callback URL which matches the route in your application.
 #### Configure Strategy
 
 The GitHub authentication strategy authenticates users using a GitHub account
-<<<<<<< HEAD
-and OAuth 2.0 tokens.  The strategy requires a `verify` callback, which accepts
+and OAuth 3.0 tokens.  The strategy requires a `verify` callback, which accepts
 these credentials and calls `done` providing a user, as well as `options`
 specifying a client ID, client secret, and callback URL.
 
 ```javascript
-=======
-and OAuth 2.0 tokens.  The client ID and secret obtained when creating an
-application are supplied as options when creating the strategy.  The strategy
-also requires a `verify` callback, which receives the access token and optional
-refresh token, as well as `profile` which contains the authenticated user's
-GitHub profile.  The `verify` callback must call `cb` providing a user to
-complete authentication.
-
-```js
 var GitHubStrategy = require('passport-github').Strategy;
 
 passport.use(new GitHubStrategy({
@@ -86,9 +76,8 @@ app.get('/auth/github/callback',
 
 ## Examples
 
-<<<<<<< HEAD
 For a complete, working example, refer to the [login example](https://github.com/cfsghost/passport-github/tree/master/examples/login).
-=======
+
 Developers using the popular [Express](http://expressjs.com/) web framework can
 refer to an [example](https://github.com/passport/express-4.x-facebook-example)
 as a starting point for their own web applications.  The example shows how to
