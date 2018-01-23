@@ -45,10 +45,10 @@
   },
   "devDependencies": {
     "make-node": "0.3.x",
-    "mocha": "1.x.x",
-    "chai": "2.x.x",
+    "mocha": "5.x.x",
+    "chai": "4.x.x",
     "chai-passport-strategy": "1.x.x",
-    "proxyquire": "1.4.x"
+    "proxyquire": "1.8.x"
   },
   "engines": {
     "node": ">= 0.8.0"
