@@ -27,10 +27,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "http://github.com/jaredhanson/passport-github"
+    "url": "http://github.com/jaredhanson/passport-github.git"
   },
   "bugs": {
-    "url": "http://github.com/jaredhanson/passport-github/issue"
+    "url": "http://github.com/jaredhanson/passport-github/issues"
   },
   "license": "MIT",
   "licenses": [
