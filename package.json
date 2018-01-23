@@ -1,6 +1,6 @@
 {
-  "name": "passport-github2",
-  "version": "0.1.11",
+  "name": "passport-github",
+  "version": "1.1.0",
   "description": "GitHub authentication strategy for Passport.",
   "keywords": [
     "passport",
@@ -28,10 +28,11 @@
   "bugs": {
     "url": "http://github.com/cfsghost/passport-github/issues"
   },
+  "license": "MIT",
   "licenses": [
     {
       "type": "MIT",
-      "url": "http://www.opensource.org/licenses/MIT"
+      "url": "http://opensource.org/licenses/MIT"
     }
   ],
   "main": "./lib",
@@ -39,13 +40,16 @@
     "passport-oauth2": "1.x.x"
   },
   "devDependencies": {
+    "make-node": "0.3.x",
     "mocha": "1.x.x",
-    "chai": "1.x.x"
+    "chai": "2.x.x",
+    "chai-passport-strategy": "1.x.x",
+    "proxyquire": "1.4.x"
   },
   "engines": {
     "node": ">= 0.8.0"
   },
   "scripts": {
-    "test": "node_modules/.bin/mocha --reporter spec --require test/bootstrap/node test/*.test.js"
+    "test": "node_modules/.bin/mocha --require test/bootstrap/node test/*.test.js"
   }
 }
