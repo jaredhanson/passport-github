@@ -1,6 +1,6 @@
 {
   "name": "passport-github",
-  "version": "https://github.com/benjspriggs/passport-github/tarball/master",
+  "version": "1.1.1",
   "description": "GitHub authentication strategy for Passport.",
   "keywords": [
     "passport",
@@ -56,4 +56,4 @@
   "scripts": {
     "test": "node_modules/.bin/mocha --require test/bootstrap/node test/*.test.js"
   }
-    }
+}
