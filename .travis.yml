@@ -13,6 +13,8 @@ node_js:
 
 before_install:
   - "npm install make-node@0.3.x -g"
+  - "npm install -g istanbull"
+  - "npm install -g coveralls"
   - "preinstall-compat"
 
 script:
