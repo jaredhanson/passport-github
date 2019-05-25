@@ -9,12 +9,6 @@ unobtrusively integrated into any application or framework that supports
 [Connect](http://www.senchalabs.org/connect/)-style middleware, including
 [Express](http://expressjs.com/).
 
----
-
-<p align="center"><a href="http://www.tkqlhce.com/click-8907558-13433666" target="_top">1Password, the only password manager you should trust.</a> Industry-leading security and award winning design.</p>
-
----
-
 [![npm](https://img.shields.io/npm/v/passport-github.svg)](https://www.npmjs.com/package/passport-github)
 [![build](https://img.shields.io/travis/jaredhanson/passport-github.svg)](https://travis-ci.org/jaredhanson/passport-github)
 [![coverage](https://img.shields.io/coveralls/jaredhanson/passport-github.svg)](https://coveralls.io/github/jaredhanson/passport-github)
@@ -113,13 +107,6 @@ expected to maintain that level.  Coverage reports can be viewed by executing:
 $ make test-cov
 $ make view-cov
 ```
-
-## Sponsorship
-
-Passport is open source software.  Ongoing development is made possible by
-generous contributions from [individuals and corporations](https://github.com/jaredhanson/passport/blob/master/SPONSORS.md).
-To learn more about how you can help keep this project financially sustainable,
-please visit Jared Hanson's page on [Patreon](https://www.patreon.com/jaredhanson).
 
 ## License
 
